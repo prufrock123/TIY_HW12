@@ -23,6 +23,15 @@ function sumForLoop(){
 	return sum;
 }
 
+function averageForLoop(){
+	var slicedArgs = Array.prototype.slice.call(arguments);
+	var sum = 0;
+	for (i=0; i<slicedArgs.length; i++){
+		sum += slicedArgs[i]; 
+	}
+	return sum/slicedArgs.length
+}
+
 
 
 
@@ -31,3 +40,25 @@ function sumForLoop(){
 
 
 // custom forEach
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
