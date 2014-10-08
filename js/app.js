@@ -33,7 +33,7 @@ function averageForLoop() {
     for (var i = 0; i < slicedArgs.length; i++) {
         sum += slicedArgs[i];
     }
-    return sum / slicedArgs.length
+    return sum / slicedArgs.length;
 }
 
 
@@ -114,12 +114,12 @@ function longestStringForLoop() {
         for (var i = 0; i < slicedArgs.length; i++){
             for (var j = i+1; j < slicedArgs.length; j++){
                 if (slicedArgs[i].length < slicedArgs[j].length){
-                    swap(slicedArgs, i, j)
+                    swap(slicedArgs, i, j);
                 }
             }
         }
 
-    return slicedArgs[0]
+    return slicedArgs[0];
 }
 
 // 5. given an array of Date() objects (Oct 4th 2014, Oct 3rd 2014, Sept 30th 2014, Sept 1st 2012, 
@@ -138,7 +138,7 @@ function longestStringForLoop() {
 function sortDateForLoop() {
     'use strict';
     function swap(array, greater, lesser){
-        'use strict'
+        'use strict';
         var temp = array[greater];
         array[greater] = array[lesser];
         array[lesser] = temp;
@@ -146,11 +146,11 @@ function sortDateForLoop() {
     for (var i = 0; i < dates.length; i++) {
         for (var j = i+1; j < dates.length; j++) {
             if (+dates[i] > +dates[j]) {
-                swap(dates, i, j)
+                swap(dates, i, j);
             }
         }
     }
-    return dates
+    return dates;
 }
 
 //------------------
