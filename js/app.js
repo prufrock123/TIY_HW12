@@ -15,66 +15,134 @@
 // for loop
 // 1.
 function sumForLoop() {
-    var slicedArgs = Array.prototype.slice.call(arguments); // call works here. Dif between apply and call is that call passes any number of args into function, apply passes only the second and it has to be an array. In this case, .slice([])= .slice() so it doesn't matter that there is a second argument at all, so call and apply don't matter?
-    var sum = 0;
-    for (i = 0; i < slicedArgs.length; i++) {
-        sum += slicedArgs[i];
+        'use strict';
+        var slicedArgs = Array.prototype.slice.call(arguments); // call works here. Dif between apply and call is that call passes any number of args into function, apply passes only the second and it has to be an array. In this case, .slice([])= .slice() so it doesn't matter that there is a second argument at all, so call and apply don't matter?
+        var sum = 0;
+        for (var i = 0; i < slicedArgs.length; i++) {
+            sum += slicedArgs[i];
+        }
+        return sum;
     }
-    return sum;
-}
-
+    // 2.
 function averageForLoop() {
+    'use strict';
     var slicedArgs = Array.prototype.slice.call(arguments); // see comment for sumForLoop
     var sum = 0;
-    for (i = 0; i < slicedArgs.length; i++) {
+    for (var i = 0; i < slicedArgs.length; i++) {
         sum += slicedArgs[i];
     }
     return sum / slicedArgs.length
 }
 
+
+
+
+// 3.
 function largestNumberForLoop() {
+    'use strict';
     var slicedArgs = Array.prototype.slice.call(arguments);
-    var sortedArray = []
-    // var sortedNumber = slicedArgs.sort(function(a, b) {
-    //     return a > b ? -1 : 1
-    // })
+    // var sortedArray = []
+	    // var sortedNumber = slicedArgs.sort(function(a, b) {
+	    //     return a > b ? -1 : 1
+	    // })
+	    /**
+	     * AHHAHAHAHA. when I ran largestNumberForLoop(2, 4, 10, 44, 1, 2)
+	     * it returned 7. I have NO idea how that happened so I'm saving this in comments
+	     * for lawls. Before this, I tried "splice" instead of slice.
+	     */
+	    // return sortedNumber[0]
+	    // for (i=0; i<slicedArgs.length; i++){
+	    // 	if (slicedArgs[i] > slicedArgs[i+1]){
+	    // 		sortedArray = slicedArgs.unshift(slicedArgs.slice(slicedArgs[i]));
+	    // 	} else {
+	    // 		sortedArray = slicedArgs.push(slicedArgs.slice(slicedArgs[i]));
+	    // 	}
+	    // 	return sortedArray;
+	    // }
+	    // 
+    function swap(array, lesser, greater) {
+            var temp = array[lesser];
+                array[lesser] = array[greater];
+                array[greater] = temp;
+        }
+        // for(var i = 0; i < slicedArgs)
 
-
-	/**
-	 * AHHAHAHAHA. when I ran largestNumberForLoop(2, 4, 10, 44, 1, 2)
-	 * it returned 7. I have NO idea how that happened so I'm saving this in comments
-	 * for lawls. Before this, I tried "splice" instead of slice.
-	 */
-    // return sortedNumber[0]
-    // for (i=0; i<slicedArgs.length; i++){
-    // 	if (slicedArgs[i] > slicedArgs[i+1]){
-    // 		sortedArray = slicedArgs.unshift(slicedArgs.slice(slicedArgs[i]));
-    // 	} else {
-    // 		sortedArray = slicedArgs.push(slicedArgs.slice(slicedArgs[i]));
-    // 	}
-    // 	return sortedArray;
-    // }
-    // 
-    // 
-    for (i=0; i<slicedArgs.length; i++){
-    	if (slicedArgs[i] > slicedArgs[i+1]){
-    		sortedArray.unshift(slicedArgs[i]);
-    	} else {
-    		sortedArray.push(slicedArgs[i]);
-    	}
+    for (var i = 0; i < slicedArgs.length; i++) {
+        // var emptyArray = []
+        for (var j = i + 1; j < slicedArgs.length; j++) {
+            if (slicedArgs[i] < slicedArgs[j]) {
+                swap(slicedArgs, i, j);
+            }
+        }
     }
-    return sortedArray[0];
+    console.dir(slicedArgs);
+    return slicedArgs;
+
+    //     for (var i = 0; i < slicedArgs.length; i++) {
+    //         if (typeof slicedArgs[i + 1] === "undefined" && slicedArgs[i] > slicedArgs[0]) {
+    //             sortedArray.unshift(slicedArgs[i]);
+    //         } else if (typeof slicedArgs[i + 1] !== "undefined" && slicedArgs[i] > slicedArgs[i + 1]) {
+    //             sortedArray.unshift(slicedArgs[i]);
+    //         } else {
+    //             sortedArray.push(slicedArgs[i]);
+    //         }
+    //         console.dir(sortedArray.toString())
+    //     }
+    //     // 
+    // return sortedArray[0];
+
+    // for (var i = 0, largestNumber = 0; i < slicedArgs.length; i++) {
+    //     largestNumber = 
+    //     	largestNumber < slicedArgs[i] ? 
+    //     		slicedArgs[i] : 
+    //     		largestNumber;
+    // }
+
+    // return largestNumber;
 }
 
+
+
+// 4.
 function longestStringForLoop() {
+    'use strict';
     var slicedArgs = Array.prototype.slice.apply(arguments);
-    
+
 
     return slicedArgs
 }
 
+// 5. given an array of Date() objects (Oct 4th 2014, Oct 3rd 2014, Sept 30th 2014, Sept 1st 2012, 
+// March 13th 2010), in that order, sort them chronologically. 
+// Use http://devdocs.io/javascript/global_objects/date for reference on creating Date() 
+// objects with a specific date.
+/* setup */
+var dates = [
+    new Date(2014, 9, 4),
+    new Date(2014, 9, 3),
+    new Date(2014, 8, 29),
+    new Date(2014, 9, 1),
+    new Date(2014, 2, 13)
+];
+
+function sortDateForLoop() {
+    'use strict';
+    var newArray = [],
+        EarliestDate;
+    for (var i = 0; i < dates.length; i++) {
+        earliestDate = dates[i];
+        // Find the lowest date and store it in earliestDate
+        for (var j = 0; j < newArray.length; j++) {
+            if (+dates[j] < +earliestDate) {
+                earlistDate = dates[j]
+            }
+        }
+    }
+}
+
+//------------------
 // Array.forEach
 
 
-
+//------------------
 // custom forEach
