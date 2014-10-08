@@ -14,51 +14,67 @@
 
 // for loop
 // 1.
-function sumForLoop(){
-	var slicedArgs = Array.prototype.slice.call(arguments); // call works here. Dif between apply and call is that call passes any number of args into function, apply passes only the second and it has to be an array. In this case, .slice([])= .slice() so it doesn't matter that there is a second argument at all, so call and apply don't matter?
-	var sum = 0;
-	for (i=0;i<slicedArgs.length;i++){
-		sum += slicedArgs[i];
-	}
-	return sum;
+function sumForLoop() {
+    var slicedArgs = Array.prototype.slice.call(arguments); // call works here. Dif between apply and call is that call passes any number of args into function, apply passes only the second and it has to be an array. In this case, .slice([])= .slice() so it doesn't matter that there is a second argument at all, so call and apply don't matter?
+    var sum = 0;
+    for (i = 0; i < slicedArgs.length; i++) {
+        sum += slicedArgs[i];
+    }
+    return sum;
 }
 
-function averageForLoop(){
-	var slicedArgs = Array.prototype.slice.call(arguments);
-	var sum = 0;
-	for (i=0; i<slicedArgs.length; i++){
-		sum += slicedArgs[i]; 
-	}
-	return sum/slicedArgs.length
+function averageForLoop() {
+    var slicedArgs = Array.prototype.slice.call(arguments); // see comment for sumForLoop
+    var sum = 0;
+    for (i = 0; i < slicedArgs.length; i++) {
+        sum += slicedArgs[i];
+    }
+    return sum / slicedArgs.length
 }
 
+function largestNumberForLoop() {
+    var slicedArgs = Array.prototype.slice.call(arguments);
+    var sortedArray = []
+    // var sortedNumber = slicedArgs.sort(function(a, b) {
+    //     return a > b ? -1 : 1
+    // })
 
 
+	/**
+	 * AHHAHAHAHA. when I ran largestNumberForLoop(2, 4, 10, 44, 1, 2)
+	 * it returned 7. I have NO idea how that happened so I'm saving this in comments
+	 * for lawls. Before this, I tried "splice" instead of slice.
+	 */
+    // return sortedNumber[0]
+    // for (i=0; i<slicedArgs.length; i++){
+    // 	if (slicedArgs[i] > slicedArgs[i+1]){
+    // 		sortedArray = slicedArgs.unshift(slicedArgs.slice(slicedArgs[i]));
+    // 	} else {
+    // 		sortedArray = slicedArgs.push(slicedArgs.slice(slicedArgs[i]));
+    // 	}
+    // 	return sortedArray;
+    // }
+    // 
+    // 
+    for (i=0; i<slicedArgs.length; i++){
+    	if (slicedArgs[i] > slicedArgs[i+1]){
+    		sortedArray.unshift(slicedArgs[i]);
+    	} else {
+    		sortedArray.push(slicedArgs[i]);
+    	}
+    }
+    return sortedArray[0];
+}
+
+function longestStringForLoop() {
+    var slicedArgs = Array.prototype.slice.apply(arguments);
+    
+
+    return slicedArgs
+}
 
 // Array.forEach
 
 
 
 // custom forEach
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
