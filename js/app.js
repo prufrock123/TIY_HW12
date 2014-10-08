@@ -23,7 +23,9 @@ function sumForLoop() {
         }
         return sum;
     }
-    // 2.
+
+
+// 2.
 function averageForLoop() {
     'use strict';
     var slicedArgs = Array.prototype.slice.call(arguments); // see comment for sumForLoop
@@ -33,7 +35,6 @@ function averageForLoop() {
     }
     return sum / slicedArgs.length
 }
-
 
 
 // 3.
@@ -75,7 +76,7 @@ function largestNumberForLoop() {
         }
     }
     console.dir(slicedArgs);
-    return slicedArgs;
+    return slicedArgs[0];
 
     //     for (var i = 0; i < slicedArgs.length; i++) {
     //         if (typeof slicedArgs[i + 1] === "undefined" && slicedArgs[i] > slicedArgs[0]) {
@@ -101,14 +102,24 @@ function largestNumberForLoop() {
 }
 
 
-
 // 4.
 function longestStringForLoop() {
     'use strict';
+    function swap(array, lesser, greater){
+        var temp = array[lesser];
+            array[lesser] = array[greater];
+            array[greater] = temp;
+    }
     var slicedArgs = Array.prototype.slice.apply(arguments);
+        for (var i = 0; i < slicedArgs.length; i++){
+            for (var j = i+1; j < slicedArgs.length; j++){
+                if (slicedArgs[i].length < slicedArgs[j].length){
+                    swap(slicedArgs, i, j)
+                }
+            }
+        }
 
-
-    return slicedArgs
+    return slicedArgs[0]
 }
 
 // 5. given an array of Date() objects (Oct 4th 2014, Oct 3rd 2014, Sept 30th 2014, Sept 1st 2012, 
@@ -116,27 +127,30 @@ function longestStringForLoop() {
 // Use http://devdocs.io/javascript/global_objects/date for reference on creating Date() 
 // objects with a specific date.
 /* setup */
-var dates = [
-    new Date(2014, 9, 4),
-    new Date(2014, 9, 3),
-    new Date(2014, 8, 29),
-    new Date(2014, 9, 1),
-    new Date(2014, 2, 13)
-];
+    var dates = [
+        new Date(2014, 9, 4),
+        new Date(2014, 9, 3),
+        new Date(2014, 8, 29),
+        new Date(2014, 9, 1),
+        new Date(2014, 2, 13)
+    ];
 
 function sortDateForLoop() {
     'use strict';
-    var newArray = [],
-        EarliestDate;
+    function swap(array, greater, lesser){
+        'use strict'
+        var temp = array[greater];
+        array[greater] = array[lesser];
+        array[lesser] = temp;
+    }
     for (var i = 0; i < dates.length; i++) {
-        earliestDate = dates[i];
-        // Find the lowest date and store it in earliestDate
-        for (var j = 0; j < newArray.length; j++) {
-            if (+dates[j] < +earliestDate) {
-                earlistDate = dates[j]
+        for (var j = i+1; j < dates.length; j++) {
+            if (+dates[i] > +dates[j]) {
+                swap(dates, i, j)
             }
         }
     }
+    return dates
 }
 
 //------------------
