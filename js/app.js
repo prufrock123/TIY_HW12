@@ -36,7 +36,6 @@ function averageForLoop() {
 
 
 
-
 // 3.
 function largestNumberForLoop() {
     'use strict';
