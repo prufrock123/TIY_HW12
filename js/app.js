@@ -243,6 +243,16 @@
              * if (element < array.forEach(function(unit, i){ if (i > index){ return unit }))
              */
             
+            //comments
+                    //     +dates.slice(index).forEach(function(unit, i){
+                    //     return unit;
+                    // })){
+                    //     swap(dates, i, index);
+                    // }
+                    // if (+element < +dates[index+1]){
+                    //     swap(dates, index, index+1);
+                    // }
+            
             function swap(array, lesser, greater){
                 var temp = array[greater];
                     array[greater] = array[lesser];
@@ -267,29 +277,35 @@
                     swap(dates, indexOfLowestElement, index);
                 } 
 
-//comments
-                    //     +dates.slice(index).forEach(function(unit, i){
-                    //     return unit;
-                    // })){
-                    //     swap(dates, i, index);
-                    // }
-                    // if (+element < +dates[index+1]){
-                    //     swap(dates, index, index+1);
-                    // }
+
             });
             return dates;
         }
 
     //------------------
     // Custom forEach 
+    
+        /*Setup*/
+        Array.prototype.customForEach = function(callback, array){
+            for (var i = 0; i < this.length; i++){
+                callback(this[i], i, this)
+            }
+        }
+  
+
         // 1.
         function sumForEachCustom() {
-
+            var slicedArgs = Array.prototype.slice.call(arguments);
+            var sum = 0;
+            slicedArgs.customForEach(function(element){
+                sum += element;
+            });
+            return sum;
         }
         
         // 2.
         function averageForEachCustom() {
-
+            var 
         }
          
         // 3.
