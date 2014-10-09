@@ -339,5 +339,55 @@
         // 5.
         function sortDateForEachCustom() {
             
+            /*setup dates array*/
+            var dates = [
+                new Date(2014, 9, 4),
+                new Date(2014, 9, 3),
+                new Date(2014, 8, 30),
+                new Date(2012, 8, 1),
+                new Date(2014, 2, 13)
+            ]
+            
+            function swap(array, greater, lesser){
+                var temp = array[greater];
+                    array[greater] = array[lesser];
+                    array[lesser] = temp;
+            }
+
+            function getIndexOfLowestElement(array){
+                var indexOfLowestElement = 0;
+                array.customForEach(function(element, index){
+                    if (element < array[indexOfLowestElement]){
+                        indexOfLowestElement = index;
+                    }
+                });
+                return indexOfLowestElement;
+            }
+
+            dates.customForEach(function(element, index){
+                var slicedDates = dates.slice(index+1);
+                var indexOfLowestElement = getIndexOfLowestElement(slicedDates)+index+1;
+                if (+element > +dates[indexOfLowestElement]){
+                    swap(dates, index, indexOfLowestElement);
+                }
+            })
+            return dates;
+
         } 
 // }
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
