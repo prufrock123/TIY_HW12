@@ -175,7 +175,7 @@
         function averageForEach() {
             var slicedArgs = Array.prototype.slice.call(arguments);
             var sum = 0
-            slicedArgs.forEach(function(element, index){
+            slicedArgs.forEach(function(element){
                 sum += element;
             });
             return sum/slicedArgs.length
@@ -184,11 +184,27 @@
          
         // 3.
         function largestNumberForEach(){
+            var slicedArgs = Array.prototype.slice.call(arguments);
+            var largestNumber = 0;
+            slicedArgs.forEach(function(element){
+                if(element > largestNumber){
+                    largestNumber = element;
+                }
+            });
+            return largestNumber;
          
         }
         // 4.
         function longestStringForEach(){
-
+            var slicedArgs = Array.prototype.slice.call(arguments);
+            var longestString = "";
+            slicedArgs.forEach(function(element, index, splitArgs){  // Going ahead and including all of forEach's arguments for practice.
+                if (element.length > longestString.length){
+                    longestString = element;
+                }
+            });
+            // return slicedArgs
+            return longestString; 
         }
         
         // 5.
