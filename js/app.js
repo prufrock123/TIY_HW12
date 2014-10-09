@@ -305,16 +305,35 @@
         
         // 2.
         function averageForEachCustom() {
-            var 
+            var slicedArgs = Array.prototype.slice.call(arguments);
+            var sum = 0;
+            slicedArgs.customForEach(function(element){
+                sum += element
+            });
+            return sum/slicedArgs.length;
         }
          
         // 3.
         function largestNumberForEachCustom(){
-         
+            var slicedArgs = Array.prototype.slice.call(arguments);
+            var largestNumber = 0;
+            slicedArgs.customForEach(function(element){
+                if (element > largestNumber){
+                    largestNumber = element;
+                }
+            })
+            return largestNumber;
         }
         // 4.
         function longestStringForEachCustom(){
-
+            var slicedArgs = Array.prototype.slice.call(arguments);
+            var largestString = "";
+            slicedArgs.customForEach(function(element){
+                if (element.length > largestString.length){
+                    largestString = element;
+                }
+            });
+            return largestString;
         }
         
         // 5.
