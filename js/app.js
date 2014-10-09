@@ -209,7 +209,75 @@
         
         // 5.
         function sortDateForEach() {
+            // date array setup
+            var dates = [
+                new Date(2014, 9, 4),
+                new Date(2014, 9, 3),
+                new Date(2014, 8, 30),
+                new Date(2012, 8, 1),
+                new Date(2014, 2, 13)
+            ];
+            // return dates; // was testing to make sure dates returned correctly. 
+ 
+            /**
+             * This was just a test to practice finding the earliest date, even tho it doesn't sort.
+             */
+                // var earliestDate = new Date(2020, 10, 10);
 
+                // dates.forEach(function(individualDate){
+                //     if (+individualDate < +earliestDate){
+                //         earliestDate = individualDate
+                //     }
+                // })
+                // return earliestDate;
+             
+            /**
+             * For each element of the dates array we are going to perform some function.
+             * This function will take the element and compare it to all of the other elements in the array.
+             * once we have hold of the element, how do we tell JS to compare this element to the elements in the array
+             * after it? We want to compare the element to the array elements greater than array[element's index]... hm.
+             * like if element < (array.forEach(function(element, i){ return  })
+             *
+             *
+             * Ok start over. For each element, compare it to each element of the array with an index greater than array[element's index].
+             * if (element < array.forEach(function(unit, i){ if (i > index){ return unit }))
+             */
+            
+            function swap(array, lesser, greater){
+                var temp = array[greater];
+                    array[greater] = array[lesser];
+                    array[lesser] = temp;
+            }
+
+            function getIndexOfLowestElement(array){
+                var indexOfLowestElement = 0;
+                array.forEach(function(element, index){
+                    if (array[index] < array[indexOfLowestElement]){
+                        indexOfLowestElement = index;
+                    }
+                });
+                return indexOfLowestElement;
+            }
+
+
+            dates.forEach(function(element, index){
+                var slicedDates = dates.slice(index+1);
+                var indexOfLowestElement = getIndexOfLowestElement(slicedDates)+(index+1)
+                if (+dates[index] > +dates[indexOfLowestElement]){
+                    swap(dates, indexOfLowestElement, index);
+                } 
+
+//comments
+                    //     +dates.slice(index).forEach(function(unit, i){
+                    //     return unit;
+                    // })){
+                    //     swap(dates, i, index);
+                    // }
+                    // if (+element < +dates[index+1]){
+                    //     swap(dates, index, index+1);
+                    // }
+            });
+            return dates;
         }
 
     //------------------
