@@ -1,9 +1,6 @@
-// window.onload = app;
-
-// function app() {
-//     "use strict";
 
 
+//PART 1
     // use EACH of the iteration methods discussed in class today (for loop, Array.forEach, custom forEach) 
     // for EACH of the following problems
     // 1. calculate the sum of numbers (can be any number of arguments)
@@ -374,20 +371,116 @@
             return dates;
 
         } 
+// 
+// 
+// 
+// 
+// ------------------------------------------------------------------------
+//PART 2
+    // set up arrays
+    var numbers = [1,12,4,18,9,7,11,3,101,5,6];
+    var strings = ['this','is','a','collection','of','words'];
+
+    var customers = [
+        { firstname : 'Joe', lastname : 'Blogs'},
+        { firstname : 'John', lastname : 'Smith'},
+        { firstname : 'Dave', lastname : 'Jones'},
+        { firstname : 'Jack', lastname : 'White'}
+    ];
+
+    // console.log(customers);
+
+    // // YOUR CODE WILL GO IN THIS NEXT SECTION
+    // // find all customers whose firstname starts with 'J',
+    // // map() those people into an array of objects like: { name : c.firstname + " " + c.lastname }
+    // // then sort alphabetically
+
+    // var projections = customers
+    //     .filter(function(c){ /* ... */ })
+    //     .map(function(c){  /* ... */ })
+    //     .sort(sortByName);
+
+    // function sortByName(c1, c2) {
+    //     "use strict";
+    //     //...
+    // }
+
+    // console.log(projections);
+    // Tested both options below to make sure they worked.
+
+function sortMyObjects(customers){
+
+    function firstLetterJ(element) {
+        return element.firstname[0] === "J";
+    }
+    var filteredCustomers = customers.filter(firstLetterJ);
+
+    // var filteredCustomers = customers.filter(function(person){
+    //     return person.firstname[0] === "J";
+    // });
+    // console.log(filteredCustomers);
+
+    var mapFirstLastName = filteredCustomers.map(function(person){
+        return Object.create(Object.prototype, { name: {value: person.firstname + " " + person.lastname }});
+        // return {name: person["firstname"] + " " + person.lastname};
+    }); 
+    // console.log(mapFirstLastName);
+
+    var sortedByFirstName = mapFirstLastName.sort(function sortByName(a, b){
+        if (a.name < b.name){
+            return -1
+        } else if ( a.name > b.name){
+            return 1
+        } else {
+            return 0;
+        }
+    });
+    // console.log(sortedByFirstName); // weird. the sortedByFirstName function also sorts the mapFirstLastName even tho it comes after...
+
+
+    return sortedByFirstName;
+};
+
+console.log(sortMyObjects(customers));
+
+// var object = { key: "value", second: "value2" }
+// var object2 = Object.create(Object.prototype, {key: {value: "value"}, second: {value: "value2"} })
+// console.dir(object)
+// console.dir(object2)
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+
+// function reject(list, predicate){
+//     list.forEach(function(element, index){
+//         predicate(element);
+//     });
 // }
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
